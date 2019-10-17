@@ -18,20 +18,18 @@ public class CalendarController {
 
 	@Autowired
 	CalendarService calendarService;
-	
-	
+
 	@PostMapping("/getdetails")
-	public Optional<Calendar> getDayDetails(@RequestBody String date) {		
-		SimpleDateFormat dateformat2 = new SimpleDateFormat("dd-M-yyyy");
-		 try {
-		 Date newdate = dateformat2.parse(date);
-		 Optional<Calendar> dt = calendarService.getDayDetails(newdate);
-		 Calendar str = dt.get();
-		 System.out.println(str);
-		 return calendarService.getDayDetails(newdate);
-		 } catch (ParseException e) {
-		 e.printStackTrace();
-		 }
+	public Optional<Calendar> getDayDetails(@RequestBody String date) {
+		SimpleDateFormat dateformat = new SimpleDateFormat("dd-M-yyyy");
+		try {
+			Date newdate = dateformat.parse(date);
+			Optional<Calendar> data = calendarService.getDayDetails(newdate);
+			System.out.println(data.get());
+			return calendarService.getDayDetails(newdate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 }
