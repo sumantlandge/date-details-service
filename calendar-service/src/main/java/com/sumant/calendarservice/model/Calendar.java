@@ -1,5 +1,6 @@
 package com.sumant.calendarservice.model;
 
+import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,18 +9,38 @@ import javax.persistence.Id;
 @Entity
 public class Calendar {
 	@Id
-	Date dayId;
+	Date date;
 	int day;
 	String month;
 	int year;
 	String dayOfWeek;
 	String metadata;
+	Time sunrise;
+	Time sunset;
 	
-	public Date getDayId() {
-		return dayId;
+	public Calendar() {
+	
 	}
-	public void setDayId(Date dayId) {
-		this.dayId = dayId;
+	
+	public Time getSunrise() {
+		return sunrise;
+	}
+	public void setSunrise(Time sunrise) {
+		this.sunrise = sunrise;
+	}
+	
+
+	public Time getSunset() {
+		return sunset;
+	}
+	public void setSunset(Time sunset) {
+		this.sunset = sunset;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	public int getDay() {
 		return day;
@@ -51,10 +72,11 @@ public class Calendar {
 	public void setMetadata(String metadata) {
 		this.metadata = metadata;
 	}
-	
 	@Override
 	public String toString() {
-		return "Calendar [dayId=" + dayId + ", day=" + day + ", month=" + month + ", year=" + year + ", dayOfWeek="
-				+ dayOfWeek + ", metadata=" + metadata + "]";
+		return "Calendar [dayId=" + date + ", day=" + day + ", month=" + month + ", year=" + year + ", dayOfWeek="
+				+ dayOfWeek + ", metadata=" + metadata + ", sunrise=" + sunrise + ", sunrset=" + sunset + "]";
 	}
+	
+	
 }
